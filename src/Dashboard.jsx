@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { WordsContext } from './context/ContextProvider'
+import { WordsContext } from './context/Context'
 
 const Dashboard = () => {
   const { solution, setSolutionCallback } = useContext(WordsContext)
+
+  console.log('solution', solution)
 
   return (
     <div>

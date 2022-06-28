@@ -6,19 +6,14 @@
     "name": "Filipovici Bogdan",
     "email": "bogdiusf@gmail.com"
   },
-  "repository": {
-    "type": "git",
-    "url": "tobeadded"
-  },
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "whole": "concurrently \"vite\" \"nodemon src/server/index.jsx\""
+    "preview": "vite preview"
   },
   "dependencies": {
     "axios": "^0.27.2",
-    "concurrently": "^7.2.2",
     "cors": "^2.8.5",
     "express": "^4.18.1",
     "nodemon": "^2.0.18",

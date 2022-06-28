@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/api/fetch-words': 'http://localhost:3001'
+      '/api/fetch-words': 'https://words-database.herokuapp.com'
     }
   }
 })

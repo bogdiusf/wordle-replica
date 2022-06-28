@@ -1,16 +1,18 @@
 import React, { useState, useCallback, useEffect } from 'react'
-import { createContext } from 'react'
 import axios from 'axios'
-
-export const WordsContext = createContext()
+import { WordsContext } from './Context'
 
 const ContextProvider = ({ children }) => {
   const [solution, setSolution] = useState('')
-  const [guesses, setGuesses] = useState([Array(6).fill(null)])
+  const [guesses, setGuesses] = useState(Array(6).fill(null))
   const [currentLetterGuess, setCurrentLetterGuess] = useState('')
 
   const setSolutionCallback = useCallback((value) => {
     setSolution(value)
+  }, [])
+
+  const setGuessesCallback = useCallback((value) => {
+    setGuesses(value)
   }, [])
 
   const fetchWords = async () => {
@@ -19,11 +21,13 @@ const ContextProvider = ({ children }) => {
     const randomWord = wordsArray[Math.floor(Math.random() * wordsArray.length)]
     setSolutionCallback(randomWord)
   }
+
   useEffect(() => {
     fetchWords()
-    return () => {
-      // cleanup
+    if (solution) {
+      return
     }
+    return
   }, [])
 
   const values = {
