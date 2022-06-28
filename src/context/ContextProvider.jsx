@@ -15,6 +15,10 @@ const ContextProvider = ({ children }) => {
     setGuesses(value)
   }, [])
 
+  const setCurrentLetterGuessCallback = useCallback((value) => {
+    setCurrentLetterGuess(value)
+  }, [])
+
   const fetchWords = async () => {
     const response = await axios.get('/api/fetch-words')
     const wordsArray = response.data
@@ -33,6 +37,10 @@ const ContextProvider = ({ children }) => {
   const values = {
     solution,
     setSolutionCallback,
+    guesses,
+    setGuessesCallback,
+    currentLetterGuess,
+    setCurrentLetterGuessCallback,
   }
   return (
     <WordsContext.Provider value={values}>{children}</WordsContext.Provider>
