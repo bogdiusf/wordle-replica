@@ -1,8 +1,6 @@
-import { createUseStyles } from "react-jss"
-
-const useStyles = createUseStyles({
+export const GlobalStyles = {
   dashboardBody: {
-    height: '100vh',
+    minHeight: '100vh',
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -17,19 +15,19 @@ const useStyles = createUseStyles({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: 75,
-    height: 75,
+    width: 60,
+    height: 60,
     border: [2, 'solid', 'green'],
+    borderRadius: 5,
+    textTransform: 'uppercase',
   },
   tableContainer: {
     display: 'flex',
     flexDirection: 'column',
     gap: 5,
-    paddingBottom: 50
+    paddingBottom: 30
   },
   keyboardContainer: {
     width: '60%'
   }
-})
-
-export const GlobalStyles = () => useStyles()
+}

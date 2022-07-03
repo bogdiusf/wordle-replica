@@ -1,19 +1,30 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import RowWord from './RowWord'
 import { GlobalStyles } from './GlobalStyles.styles'
+import { createUseStyles } from 'react-jss'
+import { WordsContext } from '../context/Context'
 
-const AVAILABLE_TRIES = 5
+const useStyles = createUseStyles(GlobalStyles)
 
 const TableWord = () => {
-  const table = []
+  const { guesses, currentLetterGuess } = useContext(WordsContext)
 
-  const classes = GlobalStyles()
+  const classes = useStyles()
 
-  for (let i = 0; i < AVAILABLE_TRIES; i++) {
-    table.push(<RowWord key={i} />)
-  }
-
-  return <div className={classes.tableContainer}>{table}</div>
+  return (
+    <div className={classes.tableContainer}>
+      {guesses.map((guess, i) => {
+        const isCurrentGuess =
+          i === guesses.findIndex((value) => value === null)
+        return (
+          <RowWord
+            guess={isCurrentGuess ? currentLetterGuess : guess ?? ''}
+            key={'render-row' + i}
+          />
+        )
+      })}
+    </div>
+  )
 }
 
 export default TableWord

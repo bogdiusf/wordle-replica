@@ -6,6 +6,7 @@ const ContextProvider = ({ children }) => {
   const [solution, setSolution] = useState('')
   const [guesses, setGuesses] = useState(Array(6).fill(null))
   const [currentLetterGuess, setCurrentLetterGuess] = useState('')
+  const [message, setMessage] = useState('')
 
   const setSolutionCallback = useCallback((value) => {
     setSolution(value)
@@ -17,6 +18,10 @@ const ContextProvider = ({ children }) => {
 
   const setCurrentLetterGuessCallback = useCallback((value) => {
     setCurrentLetterGuess(value)
+  }, [])
+
+  const setMessageCallback = useCallback((value) => {
+    setMessage(value)
   }, [])
 
   const fetchWords = async () => {
@@ -41,6 +46,8 @@ const ContextProvider = ({ children }) => {
     setGuessesCallback,
     currentLetterGuess,
     setCurrentLetterGuessCallback,
+    message,
+    setMessageCallback
   }
   return (
     <WordsContext.Provider value={values}>{children}</WordsContext.Provider>
